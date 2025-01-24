@@ -1,5 +1,5 @@
 -- main module file
-local module = require("plugin_name.module")
+local module = require("log-viewer.module")
 
 ---@class Config
 ---@field opt string Your config option
@@ -21,7 +21,7 @@ M.setup = function(args)
 end
 
 M.hello = function()
-  return module.my_first_function(M.config.opt)
+  vim.notify(module.my_first_function(M.config.opt))
 end
 
 return M
