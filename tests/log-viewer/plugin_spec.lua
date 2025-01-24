@@ -1,4 +1,4 @@
-local plugin = require("plugin.log-viewer")
+local plugin = require("log-viewer")
 
 describe("setup", function()
   it("works with default", function()
