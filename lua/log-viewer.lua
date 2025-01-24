@@ -11,6 +11,9 @@ M.show_lsp = function()
   require("log-viewer.show-lsp").show_lsp()
 end
 
+M.parsed_view = function()
+  require("log-viewer.parsed-view").parsed_view()
+end
 
 ---@type Config
 M.config = config
@@ -21,6 +24,7 @@ M.config = config
 M.setup = function(args)
   M.config = vim.tbl_deep_extend("force", M.config, args or {})
   vim.api.nvim_create_user_command("LogViewerLsp", require("log-viewer").show_lsp, {})
+  vim.api.nvim_create_user_command("LogViewerParsed", require("log-viewer").parsed_view, {})
 end
 
 return M
