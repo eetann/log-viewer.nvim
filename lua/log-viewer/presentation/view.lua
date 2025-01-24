@@ -13,6 +13,7 @@ function View.new()
   vim.cmd("split")
   local win = vim.api.nvim_get_current_win()
   vim.api.nvim_win_set_buf(win, buf)
+  vim.keymap.set("n", "q", ("<CMD>bdelete %d<CR>"):format(buf))
 
   return setmetatable({ buf = buf, win = win }, View)
 end
