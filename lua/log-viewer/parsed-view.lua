@@ -19,20 +19,18 @@ local function parse_json(content)
 end
 
 local function create_buffer_with_content(content)
-  local buf = vim.api.nvim_create_buf(false, true)
-  if not buf then
+  local bufnr = vim.api.nvim_create_buf(false, true)
+  if not bufnr then
     error("Failed to create buffer")
   end
 
-  vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(content, "\n"))
-  vim.api.nvim_open_win(buf, false, {
-    relative = "editor",
-    width = 80,
-    height = 20,
-    row = 10,
-    col = 10,
-    style = "minimal",
-  })
+  vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, vim.split(content, "\n"))
+
+  vim.cmd("split")
+
+  -- get current (outline) window and attach our buffer to it
+  local window = vim.api.nvim_get_current_win()
+  vim.api.nvim_win_set_buf(window, bufnr)
 end
 
 M.parsed_view = function()
