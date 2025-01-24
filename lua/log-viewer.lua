@@ -20,8 +20,8 @@ M.setup = function(args)
   M.config = vim.tbl_deep_extend("force", M.config, args or {})
 end
 
-M.hello = function()
-  vim.notify(module.my_first_function(M.config.opt))
+M.show_lsp = function()
+  module.show_lsp()
 end
 
 return M
