@@ -1,5 +1,5 @@
--- main module file
-local module = require("log-viewer.module")
+---@class MyModule
+local M = {}
 
 ---@class Config
 ---@field opt string Your config option
@@ -7,8 +7,10 @@ local config = {
   opt = "Hello!",
 }
 
----@class MyModule
-local M = {}
+M.show_lsp = function()
+  require("log-viewer.show-lsp").show_lsp()
+end
+
 
 ---@type Config
 M.config = config
@@ -18,10 +20,7 @@ M.config = config
 -- you can also put some validation here for those.
 M.setup = function(args)
   M.config = vim.tbl_deep_extend("force", M.config, args or {})
-end
-
-M.show_lsp = function()
-  module.show_lsp()
+  vim.api.nvim_create_user_command("LogViewerLsp", require("log-viewer").show_lsp, {})
 end
 
 return M
