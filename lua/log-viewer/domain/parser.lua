@@ -7,17 +7,11 @@ function Parser:new()
 end
 
 ---@param content string
----@return integer|vim.lpeg.Pattern|nil
+---@return table
 function Parser:capture(content)
-  -- local pattern = [=[^[(.*)]=]
-  local pattern = vim.re.compile([[
-    "%[" (%a+) "%]"                     -- START 部分
-    "%[" (%d%d%d%d%-%d%d%-%d%d)         -- 日付部分
-    " " (%d%d:%d%d:%d%d) "%]"           -- 時間部分
-    " " (.+)                            -- 残りのメッセージ
-]])
-  local match = vim.re.match(content, pattern)
-  return match
+  local pattern = [[\v\[(\w+)]\[(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2})] (.+)]]
+  local match = vim.fn.matchlist(content, pattern)
+  return #match > 0 and { table.unpack(match, 2) } or {}
 end
 
 ---@param content string
