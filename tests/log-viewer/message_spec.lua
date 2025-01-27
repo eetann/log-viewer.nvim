@@ -39,7 +39,7 @@ describe("message", function()
     local text = [[...lsp/handlers.lua:627	"File created: foo.md"]]
     local result = Message:new(text)
     local expected = {
-      kind = "other",
+      kind = "",
       source = "...lsp/handlers.lua:627",
       body = "File created: foo.md",
     }
@@ -50,7 +50,7 @@ describe("message", function()
     local text = "LSP logging initiated"
     local result = Message:new(text)
     local expected = {
-      kind = "other",
+      kind = "",
       source = "",
       body = text,
     }

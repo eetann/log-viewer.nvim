@@ -4,7 +4,7 @@ local function parse_table(input)
   return ok and vim.inspect(result) or input
 end
 
----@alias kind 'rpc' | 'server_request' | 'other'
+---@alias kind 'rpc' | 'server_request' | ''
 
 ---@class log-viewer.Message
 ---@field kind kind
@@ -24,14 +24,14 @@ function Message:new(text)
     }, Message)
   elseif kind_token ~= "" then
     return setmetatable({
-      kind = "other",
+      kind = "",
       source = capture[1],
       -- TODO: inputがエラーメッセージなどで`\n`があったら改行させる
       body = kind_token,
     }, Message)
   end
   return setmetatable({
-    kind = "other",
+    kind = "",
     source = "",
     body = capture[1],
   }, Message)
@@ -53,23 +53,11 @@ end
 
 function Message:get_parsed_text()
   if self.source == "" then
-    return string.format(
-      [[
-kind = %s
-body = %s]],
-      self.kind,
-      self.body
-    )
+    return string.format("\n%s", self.body)
+  elseif self.kind == "" then
+    return string.format("%s\n%s", self.source, self.body)
   end
-  return string.format(
-    [[
-kind = %s
-source = %s
-body = %s]],
-    self.kind,
-    self.source,
-    self.body
-  )
+  return string.format("%s %s\n%s", self.source, self.kind, self.body)
 end
 
 return Message

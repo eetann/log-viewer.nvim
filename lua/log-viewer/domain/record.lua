@@ -27,16 +27,7 @@ function Record:capture(line)
 end
 
 function Record:get_parsed_text()
-  return string.format(
-    [[
-level = %s
-datetime = %s %s
-%s]],
-    self.level,
-    self.date,
-    self.time,
-    self.message
-  )
+  return string.format("[%s][%s %s] %s", self.level, self.date, self.time, self.message)
 end
 
 return Record
