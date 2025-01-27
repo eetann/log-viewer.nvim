@@ -26,6 +26,7 @@ function Message:new(text)
     return setmetatable({
       kind = "other",
       source = capture[1],
+      -- TODO: inputがエラーメッセージなどで`\n`があったら改行させる
       body = kind_token,
     }, Message)
   end

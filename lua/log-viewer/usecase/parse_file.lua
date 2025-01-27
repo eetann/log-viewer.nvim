@@ -28,6 +28,7 @@ function ParseFile:execute(file_path)
   local records = {}
   for _, line in ipairs(lines) do
     table.insert(records, Record:new(line):get_parsed_text())
+    table.insert(records, "---------------")
   end
   return table.concat(records, "\n")
 end
