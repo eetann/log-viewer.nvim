@@ -9,10 +9,12 @@ function View.new()
   if not buf then
     error("Failed to create buffer")
   end
+  vim.api.nvim_buf_set_name(buf, "nvim-lsp-log")
 
   vim.cmd("split")
   local win = vim.api.nvim_get_current_win()
   vim.api.nvim_win_set_buf(win, buf)
+  vim.cmd("setfiletype nvim-lsp-log")
   vim.keymap.set("n", "q", ("<CMD>bdelete %d<CR>"):format(buf))
 
   return setmetatable({ buf = buf, win = win }, View)
