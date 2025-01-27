@@ -1,5 +1,6 @@
 # mise watch test
 [tasks.test]
+# run = 'nvim --headless -c ":PlenaryBustedDirectory tests/" --noplugin -u tests/minimal_init.lua'
 run = "vusted tests"
 sources = ["**/*.lua"]
 outputs = []
