@@ -25,8 +25,13 @@ describe("record", function()
   it("new", function()
     local content = "[START][2025-01-24 13:09:06] LSP logging initiated"
     local result = Record:new(content)
-    local expected =
-      { raw = content, level = "START", date = "2025-01-24", time = "13:09:06", message = "LSP logging initiated" }
+    local expected = {
+      raw = content,
+      level = "START",
+      date = "2025-01-24",
+      time = "13:09:06",
+      message = "kind = other\nbody = LSP logging initiated",
+    }
     assert.are.same(expected, result)
   end)
 
@@ -36,7 +41,8 @@ describe("record", function()
     local expected = [[
 level = START
 datetime = 2025-01-24 13:09:06
-message = LSP logging initiated]]
+kind = other
+body = LSP logging initiated]]
     assert.are.same(expected, result)
   end)
 end)

@@ -23,14 +23,14 @@ describe("message", function()
     assert.are.same(expected, { unpack(result, 1, 2) })
   end)
 
-  it("new normal", function()
+  it("new with parsed body", function()
     local text =
       [[.../vim/lsp/rpc.lua:408	"rpc.receive"	{  id = 5,  jsonrpc = "2.0",  method = "workspace/workspaceFolders"}]]
     local result = Message:new(text)
     local expected = {
       kind = "rpc.receive",
       source = ".../vim/lsp/rpc.lua:408",
-      body = vim.inspect([[{  id = 5,  jsonrpc = "2.0",  method = "workspace/workspaceFolders"}]]),
+      body = vim.inspect({ id = 5, jsonrpc = "2.0", method = "workspace/workspaceFolders" }),
     }
     assert.are.same(expected, result)
   end)

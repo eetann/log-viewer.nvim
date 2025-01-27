@@ -1,3 +1,9 @@
+local function parse_table(input)
+  ---@diagnostic disable-next-line: param-type-mismatch
+  local ok, result = pcall(load("return " .. input))
+  return ok and vim.inspect(result) or input
+end
+
 ---@alias kind 'rpc' | 'server_request' | 'other'
 
 ---@class log-viewer.Message
@@ -14,7 +20,7 @@ function Message:new(text)
     return setmetatable({
       kind = kind_token,
       source = capture[1],
-      body = vim.inspect(capture[3]),
+      body = parse_table(capture[3]),
     }, Message)
   elseif kind_token ~= "" then
     return setmetatable({
@@ -45,6 +51,15 @@ function Message:capture(text)
 end
 
 function Message:get_parsed_text()
+  if self.source == "" then
+    return string.format(
+      [[
+kind = %s
+body = %s]],
+      self.kind,
+      self.body
+    )
+  end
   return string.format(
     [[
 kind = %s

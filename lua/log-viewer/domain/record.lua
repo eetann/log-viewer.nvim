@@ -1,3 +1,5 @@
+local Message = require("log-viewer.domain.message")
+
 ---@class log-viewer.Record
 ---@field raw string
 ---@field level string
@@ -11,10 +13,13 @@ Record.__index = Record
 ---@return log-viewer.Record
 function Record:new(line)
   local capture = self:capture(line)
-  local record = { raw = line, level = capture[1], date = capture[2], time = capture[3], message = capture[4] }
+  local message = Message:new(capture[4]):get_parsed_text()
+  local record = { raw = line, level = capture[1], date = capture[2], time = capture[3], message = message }
   return setmetatable(record, Record)
 end
 
+---@param line string
+---@return table<string>
 function Record:capture(line)
   local pattern = [[\v\[(\w+)]\[(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}:\d{2})] (.+)]]
   local match = vim.fn.matchlist(line, pattern)
@@ -26,7 +31,7 @@ function Record:get_parsed_text()
     [[
 level = %s
 datetime = %s %s
-message = %s]],
+%s]],
     self.level,
     self.date,
     self.time,
