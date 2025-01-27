@@ -1,4 +1,4 @@
-local Parser = require("log-viewer.domain.parser")
+local Record = require("log-viewer.domain.record")
 
 ---@class log-viewer.ParseFile
 local ParseFile = {}
@@ -24,8 +24,12 @@ end
 ---@return string
 function ParseFile:execute(file_path)
   local content = read_file(file_path)
-  local result = Parser:new():execute(content)
-  return result
+  local lines = vim.split(content, "\n")
+  local records = {}
+  for _, line in ipairs(lines) do
+    table.insert(records, Record:new(line):get_parsed_text())
+  end
+  return table.concat(records, "\n")
 end
 
 return ParseFile

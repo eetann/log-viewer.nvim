@@ -3,10 +3,10 @@ local View = require("log-viewer.presentation.view")
 local M = {}
 
 function M.show()
-  local file_path = vim.fn.expand("~/ghq/dev/foo.json")
-  local parsed_content = ParseFile:new():execute(file_path)
+  local file_path = vim.lsp.get_log_path()
+  local content = ParseFile:new():execute(file_path)
   local view = View:new()
-  view:set_content(parsed_content)
+  view:set_content(content)
 end
 
 return M
