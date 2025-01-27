@@ -1,2 +1,7 @@
+# mise watch test
 [tasks.test]
-run = "ls -1 **/*.lua | entr -c vusted tests"
+run = "vusted tests"
+sources = ["**/*.lua"]
+outputs = []
+# [tasks.test]
+# run = "ls -1 **/*.lua | entr -c vusted tests"
