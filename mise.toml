@@ -1,2 +1,2 @@
 [tasks.test]
-run = "git ls-files '*.lua' | entr -cs 'vusted tests'"
+run = "ls -1 **/*.lua | entr -c vusted tests"
