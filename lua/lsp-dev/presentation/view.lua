@@ -1,7 +1,6 @@
 local ParseFile = require("lsp-dev.usecase.parse_file")
 
 local file_path = vim.lsp.get_log_path()
-local is_last_line = fales
 
 ---@class lsp-dev.View
 ---@field buf integer
@@ -27,10 +26,10 @@ function View:new()
 end
 
 function View:set_content()
-  vim.api.nvim_set_option_value("modifiable", true, { buf = self.buf })
+  vim.bo[self.buf].modifiable = true
   local content = ParseFile:new():execute(file_path)
   vim.api.nvim_buf_set_lines(self.buf, 0, -1, false, vim.fn.split(content, "\n"))
-  vim.api.nvim_set_option_value("modifiable", false, { buf = self.buf })
+  vim.bo[self.buf].modifiable = false
 end
 
 function View:set_scroll()
@@ -47,7 +46,7 @@ function View:set_scroll()
   if not watch then
     return
   end
-  local event_callback = function(err)
+  watch:start(file_path, {}, function(err)
     vim.schedule(function()
       if err then
         vim.print(err)
@@ -60,8 +59,15 @@ function View:set_scroll()
         end
       end
     end)
-  end
-  vim.uv.fs_event_start(watch, file_path, {}, event_callback)
+  end)
+
+  vim.api.nvim_create_autocmd("BufUnload", {
+    buffer = self.buf,
+    callback = function()
+      watch:stop()
+      watch:close()
+    end,
+  })
 end
 
 return View
