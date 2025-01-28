@@ -5,10 +5,10 @@ Help language server developers.
 - 📜 LSP log viewer
 - ⚡ Quickly switch log level
 
-`:LspDev showLog`
+`:LspDev showLog`  
 ![showLog](https://github.com/user-attachments/assets/94424104-d10c-4733-9183-13423a963ba2)
 
-`:LspDev changeLogLevel`
+`:LspDev changeLogLevel`  
 ![changeLogLevel](https://github.com/user-attachments/assets/fbb1a96b-0329-4666-9b02-d01073e177ae)
 
 
