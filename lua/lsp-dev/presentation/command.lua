@@ -1,8 +1,21 @@
+---@tag lsp-dev-commands
+---@toc_entry Commands
+---@text
+--- `:LspDev {subcommand}`
+---
+--- `:LspDev showLog`
+---   details -> |lsp-dev-lsp-log-viewer|
+---
+--- `:LspDev changeLogLevel`
+---   details -> |lsp-dev-change-log-level|
+
 ---@class LspDev.Subcommand
 ---@field impl fun(args:string[], opts: table) The comand implementation
 ---@field complete? fun(subcmd_arg_lead: string): string[] (optional) Command completions callback, taking the lead of the subcommand's arguments
+---@private
 
 ---@type table<string, LspDev.Subcommand>
+---@private
 local subcmd_tbl = {
   showLog = {
     impl = function()
@@ -17,6 +30,7 @@ local subcmd_tbl = {
 }
 
 ---@param opts table :h lua-guide-commands-create
+---@private
 local function lsp_dev_cmd(opts)
   local fargs = opts.fargs
   local subcmd_key = fargs[1]
