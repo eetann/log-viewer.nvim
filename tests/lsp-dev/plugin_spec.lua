@@ -1,4 +1,4 @@
-local plugin = require("log-viewer")
+local plugin = require("lsp-dev")
 
 -- describe("setup", function()
 --   it("works with default", function()

@@ -1,6 +1,6 @@
-local Message = require("log-viewer.domain.message")
+local Message = require("lsp-dev.domain.message")
 
----@class log-viewer.Record
+---@class lsp-dev.Record
 ---@field raw string
 ---@field level string
 ---@field date string
@@ -10,7 +10,7 @@ local Record = {}
 Record.__index = Record
 
 ---@param line string
----@return log-viewer.Record
+---@return lsp-dev.Record
 function Record:new(line)
   local capture = self:capture(line)
   local message = Message:new(capture[4]):get_parsed_text()

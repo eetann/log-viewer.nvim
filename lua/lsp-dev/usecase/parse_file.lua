@@ -1,6 +1,6 @@
-local Record = require("log-viewer.domain.record")
+local Record = require("lsp-dev.domain.record")
 
----@class log-viewer.ParseFile
+---@class lsp-dev.ParseFile
 local ParseFile = {}
 ParseFile.__index = ParseFile
 

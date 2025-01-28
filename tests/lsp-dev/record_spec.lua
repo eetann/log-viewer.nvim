@@ -1,4 +1,4 @@
-local Record = require("log-viewer.domain.record")
+local Record = require("lsp-dev.domain.record")
 
 describe("record", function()
   it("capture normal", function()

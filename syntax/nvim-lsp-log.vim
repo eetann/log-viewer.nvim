@@ -1,29 +1,29 @@
-hi def link LogViewerLevelTrace DiagnosticInfo
-hi def link LogViewerLevelDebug DiagnosticInfo
-hi def link LogViewerLevelInfo DiagnosticInfo
-hi def link LogViewerLevelWarn DiagnosticWarn
-hi def link LogViewerLevelError DiagnosticError
-hi def link LogViewerLevelStart DiagnosticInfo
-hi def link LogViewerTimestamp @number
-hi def link LogViewerFilename @module
-hi def link LogViewerSeparator @comment
-hi def link LogViewerTableKey @field
-hi def link LogViewerTableString @string
-hi def link LogViewerTableNumber @number
-hi def link LogViewerTablePunctuation @punctuation.bracket
-hi def link LogViewerTable @text
+hi def link LspDevLevelTrace DiagnosticInfo
+hi def link LspDevLevelDebug DiagnosticInfo
+hi def link LspDevLevelInfo DiagnosticInfo
+hi def link LspDevLevelWarn DiagnosticWarn
+hi def link LspDevLevelError DiagnosticError
+hi def link LspDevLevelStart DiagnosticInfo
+hi def link LspDevTimestamp @number
+hi def link LspDevFilename @module
+hi def link LspDevSeparator @comment
+hi def link LspDevTableKey @field
+hi def link LspDevTableString @string
+hi def link LspDevTableNumber @number
+hi def link LspDevTablePunctuation @punctuation.bracket
+hi def link LspDevTable @text
 
-syntax region LogViewerTable start=/^{/ end=/^}/ contains=LogViewerTableKey,LogViewerTableString,LogViewerTableNumber,LogViewerTablePunctuation
-syntax match LogViewerLevelTrace /\[TRACE\]/
-syntax match LogViewerLevelDebug /\[DEBUG\]/
-syntax match LogViewerLevelInfo /\[INFO\]/
-syntax match LogViewerLevelWarn /\[WARN\]/
-syntax match LogViewerLevelError /\[ERROR\]/
-syntax match LogViewerLevelStart /\[START\]/
-syntax match LogViewerTimestamp /\[[0-9-]\{10} [0-9:]\{8}\]/
-syntax match LogViewerFilename /\v\.\.\..+:\d+/
-syntax match LogViewerSeparator /^-\{10,}/
-syntax match LogViewerTableKey /\v\w+\ze\s*\=/
-syntax match LogViewerTableString /"\v([^"]*)"/
-syntax match LogViewerTableNumber /\v\d+(\.\d+)?/
-syntax match LogViewerTablePunctuation /[{}=,]/
+syntax region LspDevTable start=/^{/ end=/^}/ contains=LspDevTableKey,LspDevTableString,LspDevTableNumber,LspDevTablePunctuation
+syntax match LspDevLevelTrace /\[TRACE\]/
+syntax match LspDevLevelDebug /\[DEBUG\]/
+syntax match LspDevLevelInfo /\[INFO\]/
+syntax match LspDevLevelWarn /\[WARN\]/
+syntax match LspDevLevelError /\[ERROR\]/
+syntax match LspDevLevelStart /\[START\]/
+syntax match LspDevTimestamp /\[[0-9-]\{10} [0-9:]\{8}\]/
+syntax match LspDevFilename /\v\.\.\..+:\d+/
+syntax match LspDevSeparator /^-\{10,}/
+syntax match LspDevTableKey /\v\w+\ze\s*\=/
+syntax match LspDevTableString /"\v([^"]*)"/
+syntax match LspDevTableNumber /\v\d+(\.\d+)?/
+syntax match LspDevTablePunctuation /[{}=,]/

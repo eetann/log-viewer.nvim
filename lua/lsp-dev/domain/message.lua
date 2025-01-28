@@ -6,7 +6,7 @@ end
 
 ---@alias kind 'rpc' | 'server_request' | ''
 
----@class log-viewer.Message
+---@class lsp-dev.Message
 ---@field kind kind
 ---@field source string
 ---@field body string

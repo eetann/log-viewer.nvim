@@ -1,4 +1,4 @@
-local Message = require("log-viewer.domain.message")
+local Message = require("lsp-dev.domain.message")
 
 describe("message", function()
   it("capture normal", function()

@@ -8,11 +8,11 @@ local config = {
 }
 
 M.show_lsp = function()
-  require("log-viewer.show-lsp").show_lsp()
+  require("lsp-dev.show-lsp").show_lsp()
 end
 
 M.show = function()
-  require("log-viewer.presentation.show").show()
+  require("lsp-dev.presentation.show").show()
 end
 
 ---@type Config
@@ -23,8 +23,8 @@ M.config = config
 -- you can also put some validation here for those.
 M.setup = function(args)
   M.config = vim.tbl_deep_extend("force", M.config, args or {})
-  vim.api.nvim_create_user_command("LogViewerLsp", require("log-viewer").show_lsp, {})
-  vim.api.nvim_create_user_command("LogViewer", M.show, {})
+  vim.api.nvim_create_user_command("LspDevLsp", require("lsp-dev").show_lsp, {})
+  vim.api.nvim_create_user_command("LspDev", M.show, {})
 end
 
 return M
