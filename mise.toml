@@ -6,3 +6,6 @@ sources = ["**/*.lua"]
 outputs = []
 # [tasks.test]
 # run = "ls -1 **/*.lua | entr -c vusted tests"
+
+[tasks.generate-doc]
+run = "nvim --headless --noplugin -u ./scripts/minimal_init.lua -c \"lua require('mini.doc').generate()\" -c 'qa!'"
