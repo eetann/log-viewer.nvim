@@ -6,7 +6,7 @@
 local subcmd_tbl = {
   showLog = {
     impl = function()
-      require("lsp-dev.presentation.show").show()
+      require("lsp-dev.presentation.show_log.show_log").show_log()
     end,
   },
 }
