@@ -36,7 +36,6 @@ function View:set_scroll()
   vim.api.nvim_create_autocmd("CursorMoved", {
     buffer = self.buf,
     callback = function()
-      vim.print(self.buf)
       local line_count = vim.api.nvim_buf_line_count(self.buf)
       self.is_last_line = vim.api.nvim_win_get_cursor(self.win)[1] == line_count
     end,
