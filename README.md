@@ -1,4 +1,36 @@
 # lsp-dev.nvim
+Help language server developers.
+
+## ✨ Features
+- 📜 LSP log viewer
+- ⚡ Quickly switch log level
+
+`:LspDev showLog`
+![showLog](https://github.com/user-attachments/assets/94424104-d10c-4733-9183-13423a963ba2)
+
+`:LspDev changeLogLevel`
+![changeLogLevel](https://github.com/user-attachments/assets/fbb1a96b-0329-4666-9b02-d01073e177ae)
+
+
+## 🔌 Requirements
+- Neovim 0.10+
+- [nui.nvim](https://github.com/MunifTanjim/nui.nvim)
+
+## 📦 Installation
+
+
+```lua
+-- lazy.nvim
+{
+	dir = "eetann/lsp-dev.nvim",
+	dependencies = {
+		"MunifTanjim/nui.nvim",
+	},
+	opts = {},
+}
+```
+
+---
 
 ## TODO
 
