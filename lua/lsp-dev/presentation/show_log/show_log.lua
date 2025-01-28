@@ -1,4 +1,4 @@
-local View = require("lsp-dev.presentation.show-log.view")
+local View = require("lsp-dev.presentation.show_log.view")
 local M = {}
 
 function M.show_log()
