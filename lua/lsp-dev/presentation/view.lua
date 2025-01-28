@@ -30,7 +30,6 @@ function View:set_content()
   vim.api.nvim_set_option_value("modifiable", true, { buf = self.buf })
   local content = ParseFile:new():execute(file_path)
   vim.api.nvim_buf_set_lines(self.buf, 0, -1, false, vim.fn.split(content, "\n"))
-  -- TODO: ここで保存に関する設定をしないとだめっぽい
   vim.api.nvim_set_option_value("modifiable", false, { buf = self.buf })
 end
 
