@@ -1,4 +1,4 @@
----@class MyModule
+---@class LspDev
 local M = {}
 
 ---@class Config

@@ -2,7 +2,7 @@ local ParseFile = require("lsp-dev.usecase.parse_file")
 
 local file_path = vim.lsp.get_log_path()
 
----@class lsp-dev.View
+---@class LspDev.View
 ---@field buf integer
 ---@field win integer
 ---@field is_last_line boolean

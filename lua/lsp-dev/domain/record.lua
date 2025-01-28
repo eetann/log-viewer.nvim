@@ -1,6 +1,6 @@
 local Message = require("lsp-dev.domain.message")
 
----@class lsp-dev.Record
+---@class LspDev.Record
 ---@field raw string
 ---@field level string
 ---@field date string
@@ -10,7 +10,7 @@ local Record = {}
 Record.__index = Record
 
 ---@param line string
----@return lsp-dev.Record
+---@return LspDev.Record
 function Record:new(line)
   local capture = self:capture(line)
   local message = Message:new(capture[4]):get_parsed_text()

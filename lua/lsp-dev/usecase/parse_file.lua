@@ -1,6 +1,6 @@
 local Record = require("lsp-dev.domain.record")
 
----@class lsp-dev.ParseFile
+---@class LspDev.ParseFile
 local ParseFile = {}
 ParseFile.__index = ParseFile
 
