@@ -7,10 +7,6 @@ local config = {
   opt = "Hello!",
 }
 
-M.show_lsp = function()
-  require("lsp-dev.show-lsp").show_lsp()
-end
-
 M.show = function()
   require("lsp-dev.presentation.show").show()
 end
@@ -23,7 +19,6 @@ M.config = config
 -- you can also put some validation here for those.
 M.setup = function(args)
   M.config = vim.tbl_deep_extend("force", M.config, args or {})
-  vim.api.nvim_create_user_command("LspDevLsp", require("lsp-dev").show_lsp, {})
   vim.api.nvim_create_user_command("LspDev", M.show, {})
 end
 
