@@ -46,3 +46,8 @@ Help language server developers.
     - idやjsonrpcなど
 - [ ] positionをプレビュー&ハイライトで表示
 - [ ] 細かくパース
+
+- [ ] exit_handlerは非表示にする？
+```
+[INFO][2025-01-31 18:53:49] .../lua/vim/lsp.lua:799	"exit_handler"	{}
+```
