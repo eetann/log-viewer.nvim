@@ -46,6 +46,7 @@ Help language server developers.
     - idやjsonrpcなど
 - [ ] positionをプレビュー&ハイライトで表示
 - [ ] 細かくパース
+- [ ] viewerをbdeleteせずに他のバッファで上書きした場合、再度`:LspDev showLog`したらそのバッファを表示させる
 
 - [ ] exit_handlerは非表示にする？
 ```
