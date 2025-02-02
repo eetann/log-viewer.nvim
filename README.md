@@ -50,5 +50,5 @@ Help language server developers.
 
 - [ ] exit_handlerは非表示にする？
 ```
-[INFO][2025-01-31 18:53:49] .../lua/vim/lsp.lua:799	"exit_handler"	{}
+[INFO][2025-02-02 20:50:23] .../lua/vim/lsp.lua:799	"exit_handler"	{ {    _log_prefix = "LSP[tailwindcss]",    _on_attach_cbs = { <function 1> },    capabilities = <1>{      general = <2>{        positionEncodings = { "utf-16" }      }    },    commands = {},    <metatable> = <table 42>  } }
 ```
