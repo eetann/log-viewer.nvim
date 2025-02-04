@@ -27,6 +27,11 @@ local subcmd_tbl = {
       require("lsp-dev.presentation.change_log_level").change_log_level()
     end,
   },
+  deleteLog = {
+    impl = function()
+      -- require("lsp-dev.usecase.delete_log"):execute()
+    end,
+  },
 }
 
 ---@param opts table :h lua-guide-commands-create
