@@ -22,7 +22,7 @@ function View:new()
   vim.cmd("setfiletype nvim-lsp-log")
   vim.keymap.set("n", "q", ("<CMD>bdelete %d<CR>"):format(buf))
 
-  return setmetatable({ buf = buf, win = win, is_last_line = false }, View)
+  return setmetatable({ buf = buf, win = win, is_last_line = true }, View)
 end
 
 function View:set_content()
@@ -30,6 +30,11 @@ function View:set_content()
   local content = ParseFile:new():execute(file_path)
   vim.api.nvim_buf_set_lines(self.buf, 0, -1, false, vim.fn.split(content, "\n"))
   vim.bo[self.buf].modifiable = false
+  if self.is_last_line then
+    vim.api.nvim_win_call(self.win, function()
+      vim.cmd("normal! G")
+    end)
+  end
 end
 
 function View:set_scroll()
