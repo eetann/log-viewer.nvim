@@ -1,18 +1,16 @@
 local Record = require("lsp-dev.domain.record")
-local utils = require("lsp-dev.usecase.shared.utils")
 
----@class LspDev.ParseFile
-local ParseFile = {}
-ParseFile.__index = ParseFile
+---@class LspDev.ParseLog
+local ParseLog = {}
+ParseLog.__index = ParseLog
 
-function ParseFile.new()
-  return setmetatable({}, ParseFile)
+function ParseLog.new()
+  return setmetatable({}, ParseLog)
 end
 
----@param file_path string
+---@param content string
 ---@return string
-function ParseFile:execute(file_path)
-  local content = utils.read_file(file_path)
+function ParseLog:execute(content)
   local lines = vim.split(content, "\n")
   local records = {}
   for _, line in ipairs(lines) do
@@ -22,4 +20,4 @@ function ParseFile:execute(file_path)
   return table.concat(records, "\n")
 end
 
-return ParseFile
+return ParseLog
