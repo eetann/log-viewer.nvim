@@ -19,8 +19,11 @@ function View:new()
   vim.cmd("split")
   local win = vim.api.nvim_get_current_win()
   vim.api.nvim_win_set_buf(win, buf)
+
   vim.cmd("setfiletype nvim-lsp-log")
   vim.keymap.set("n", "q", ("<CMD>bdelete %d<CR>"):format(buf))
+  vim.bo[buf].bufhidden = "delete"
+
   local file_path = vim.lsp.get_log_path()
   return setmetatable({ file = File:new(file_path), buf = buf, win = win, is_last_line = true }, View)
 end

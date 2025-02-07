@@ -8,6 +8,9 @@
 ---
 --- `:LspDev changeLogLevel`
 ---   details -> |lsp-dev-change-log-level|
+---
+--- `:LspDev showCapabilities`
+---   details -> |lsp-dev-show-capabilities|
 
 ---@class LspDev.Subcommand
 ---@field impl fun(args:string[], opts: table) The comand implementation
@@ -30,6 +33,11 @@ local subcmd_tbl = {
   deleteLog = {
     impl = function()
       require("lsp-dev.presentation.delete_log").delete_log()
+    end,
+  },
+  showCapabilities = {
+    impl = function()
+      require("lsp-dev.presentation.show_capabilities").show_capabilities()
     end,
   },
 }
