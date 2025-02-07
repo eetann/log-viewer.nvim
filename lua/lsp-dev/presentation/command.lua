@@ -29,7 +29,7 @@ local subcmd_tbl = {
   },
   deleteLog = {
     impl = function()
-      -- require("lsp-dev.usecase.delete_log"):execute()
+      require("lsp-dev.presentation.delete_log").delete_log()
     end,
   },
 }

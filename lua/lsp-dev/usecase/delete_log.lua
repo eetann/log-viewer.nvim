@@ -1,12 +1,14 @@
 local Record = require("lsp-dev.domain.record")
-local utils = require("lsp-dev.usecase.shared.utils")
 
 ---@class LspDev.DeleteLog
+---@field file IFile
 local DeleteLog = {}
 DeleteLog.__index = DeleteLog
 
-function DeleteLog:new()
-  return setmetatable({}, DeleteLog)
+---@param file IFile
+---@return LspDev.DeleteLog
+function DeleteLog:new(file)
+  return setmetatable({ file = file }, DeleteLog)
 end
 
 ---@param dateStr string
@@ -31,13 +33,13 @@ function DeleteLog:parse_date(dateStr, timeStr)
   }
 end
 
----@param file_path string
----@return string
-function DeleteLog:execute(file_path)
-  local content = utils.read_file(file_path)
+function DeleteLog:execute()
+  local content = self.file:read()
   -- TODO: 引数で範囲を指定
   local delete_end = os.date("*t") --[[@as osdate]]
-  return self:delete_lines(delete_end, content)
+  -- TODO: yes / no
+  content = self:delete_lines(delete_end, content)
+  self.file:write(content)
 end
 
 ---@param delete_end osdate
