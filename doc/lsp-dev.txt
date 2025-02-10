@@ -6,6 +6,7 @@
 Table of Contents                                  *lsp-dev-table-of-contents*
   Setup........................................................|lsp-dev.setup|
   LSP log viewer......................................|lsp-dev-lsp-log-viewer|
+  Delete LSP log..........................................|lsp-dev-delete-log|
   Change log level..................................|lsp-dev-change-log-level|
   Show language server capabilities................|lsp-dev-show-capabilities|
   Commands..................................................|lsp-dev-commands|
@@ -22,6 +23,7 @@ No setup argument is required.
 ------------------------------------------------------------------------------
                                                         *lsp-dev-lsp-log-viewer*
 
+LSP log viewer ~
 View parsed and easy-to-read LSP logs.
 When the log is updated, the view is also updated.
 If the cursor is on the last line, it will automatically scroll to the end.
@@ -32,15 +34,28 @@ default mappings:
 
 ==============================================================================
 ------------------------------------------------------------------------------
+                                                            *lsp-dev-delete-log*
+
+Delete LSP log ~
+Delete logs from the beginning of the file to the date and time you entered.
+On the dialog to decide until when to delete,
+ enter `all` and all logs will be deleted.
+
+
+==============================================================================
+------------------------------------------------------------------------------
                                                       *lsp-dev-change-log-level*
 
+Change log level ~
 You can quickly switch between LSP logging level with a popup.
+The popup also displayes the current level.
 
 
 ==============================================================================
 ------------------------------------------------------------------------------
                                                      *lsp-dev-show-capabilities*
 
+Show language server capabilities ~
 Select Language server and display the selected capabilities as a buffer.
 
 
@@ -48,10 +63,14 @@ Select Language server and display the selected capabilities as a buffer.
 ------------------------------------------------------------------------------
                                                               *lsp-dev-commands*
 
+Commands ~
 `:LspDev {subcommand}`
 
 `:LspDev showLog`
   details -> |lsp-dev-lsp-log-viewer|
+
+`:LspDev deleteLog`
+  details -> |lsp-dev-delete-log|
 
 `:LspDev changeLogLevel`
   details -> |lsp-dev-change-log-level|
@@ -64,11 +83,19 @@ Select Language server and display the selected capabilities as a buffer.
 ------------------------------------------------------------------------------
                                                                    *lsp-dev-api*
 
+API ~
+
 ------------------------------------------------------------------------------
                                                               *lsp-dev.show_log*
                                  `M.show_log`()
 
   details -> |lsp-dev-lsp-log-viewer|
+
+------------------------------------------------------------------------------
+                                                            *lsp-dev.delete_log*
+                                `M.delete_log`()
+
+  details -> |lsp-dev-delete-log|
 
 ------------------------------------------------------------------------------
                                                       *lsp-dev.change_log_level*

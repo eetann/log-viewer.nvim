@@ -1,10 +1,14 @@
 ---@tag lsp-dev-commands
 ---@toc_entry Commands
 ---@text
+--- Commands ~
 --- `:LspDev {subcommand}`
 ---
 --- `:LspDev showLog`
 ---   details -> |lsp-dev-lsp-log-viewer|
+---
+--- `:LspDev deleteLog`
+---   details -> |lsp-dev-delete-log|
 ---
 --- `:LspDev changeLogLevel`
 ---   details -> |lsp-dev-change-log-level|
@@ -25,14 +29,14 @@ local subcmd_tbl = {
       require("lsp-dev.presentation.show_log.show_log").show_log()
     end,
   },
-  changeLogLevel = {
-    impl = function()
-      require("lsp-dev.presentation.change_log_level").change_log_level()
-    end,
-  },
   deleteLog = {
     impl = function()
       require("lsp-dev.presentation.delete_log.delete_log").delete_log()
+    end,
+  },
+  changeLogLevel = {
+    impl = function()
+      require("lsp-dev.presentation.change_log_level").change_log_level()
     end,
   },
   showCapabilities = {

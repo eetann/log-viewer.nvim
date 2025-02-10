@@ -1,6 +1,7 @@
 ---@tag lsp-dev-change-log-level
 ---@toc_entry Change log level
 ---@text
+--- Change log level ~
 --- You can quickly switch between LSP logging level with a popup.
 --- The popup also displayes the current level.
 

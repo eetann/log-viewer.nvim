@@ -1,6 +1,7 @@
 ---@tag lsp-dev-show-capabilities
 ---@toc_entry Show language server capabilities
 ---@text
+--- Show language server capabilities ~
 --- Select Language server and display the selected capabilities as a buffer.
 
 local M = {}

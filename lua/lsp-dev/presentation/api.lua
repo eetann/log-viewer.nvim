@@ -1,6 +1,7 @@
 ---@tag lsp-dev-api
 ---@toc_entry API
 ---@text
+--- API ~
 
 local M = {}
 
@@ -9,6 +10,13 @@ local M = {}
 ---   details -> |lsp-dev-lsp-log-viewer|
 M.show_log = function()
   require("lsp-dev.presentation.show_log.show_log").show_log()
+end
+
+---@tag lsp-dev.delete_log
+---@text
+---   details -> |lsp-dev-delete-log|
+M.delete_log = function()
+  require("lsp-dev.presentation.delete_log.delete_log").delete_log()
 end
 
 ---@tag lsp-dev.change_log_level

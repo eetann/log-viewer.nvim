@@ -1,3 +1,11 @@
+---@tag lsp-dev-delete-log
+---@toc_entry Delete LSP log
+---@text
+--- Delete LSP log ~
+--- Delete logs from the beginning of the file to the date and time you entered.
+--- On the dialog to decide until when to delete,
+---  enter `all` and all logs will be deleted.
+
 local InputDatetime = require("lsp-dev.presentation.delete_log.input_datetime")
 local PopupYesno = require("lsp-dev.presentation.delete_log.popup_yesno")
 local File = require("lsp-dev.infrastructure.file")
