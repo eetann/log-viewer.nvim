@@ -9,16 +9,23 @@ function PopupYesno:new()
 end
 
 ---@param dateTimeStr string
----@param delete_line_count integer
+---@param remain_count integer
 ---@param callback fun()
-function PopupYesno:execute(dateTimeStr, delete_line_count, callback)
-  local content =
-    { "Do you want to delete log until " .. dateTimeStr, delete_line_count .. " lines will remain.", "[y/N]" }
+function PopupYesno:execute(dateTimeStr, remain_count, callback)
+  local content = {}
+  if remain_count == 0 then
+    table.insert(content, "Do you want to delete ALL logs?")
+    table.insert(content, "Really???")
+  else
+    table.insert(content, "Do you want to delete logs until " .. dateTimeStr)
+    table.insert(content, remain_count .. " lines will remain.")
+  end
+  table.insert(content, "[y/N]")
 
   local popup = Popup({
     position = "50%",
     size = {
-      width = 50,
+      width = 70,
       height = 3,
     },
     border = {

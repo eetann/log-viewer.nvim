@@ -28,6 +28,9 @@ end
 ---@param dateTimeStr string
 ---@return string[]|nil
 function DeleteLog:execute(dateTimeStr)
+  if dateTimeStr:lower() == "all" then
+    return {}
+  end
   local delete_end = self:parse_date(dateTimeStr)
   if delete_end.sec == nil then
     vim.notify("Date and time format is wrong.")
