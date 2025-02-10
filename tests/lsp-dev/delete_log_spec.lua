@@ -20,8 +20,8 @@ describe("DeleteLog", function()
 [START][2025-01-24 13:09:06] foo
 [START][2077-07-07 19:00:00] bar
 ]]
-    local delete_end = os.date("*t") --[[@as osdate]]
-    local result = DeleteLog:delete_lines(delete_end, content)
+    local dateTimeStr = os.date("*t") --[[@as osdate]]
+    local result = DeleteLog:delete_lines(dateTimeStr, content)
     local expected = { "[START][2077-07-07 19:00:00] bar" }
     assert.is.same(expected, result)
   end)

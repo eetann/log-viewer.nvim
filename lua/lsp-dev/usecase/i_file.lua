@@ -1,4 +1,4 @@
 ---@class IFile
 ---@field path string
----@field read fun(self) => string
----@field write fun(self, content: string) => string
+---@field read fun(self): string
+---@field write fun(self, content: string)
