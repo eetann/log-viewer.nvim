@@ -1,8 +1,8 @@
-local ParseFile = require("lsp-dev.usecase.parse_file")
-
-local file_path = vim.lsp.get_log_path()
+local File = require("lsp-dev.infrastructure.file")
+local ParseLog = require("lsp-dev.usecase.parse_log")
 
 ---@class LspDev.View
+---@field file IFile
 ---@field buf integer
 ---@field win integer
 ---@field is_last_line boolean
@@ -19,17 +19,26 @@ function View:new()
   vim.cmd("split")
   local win = vim.api.nvim_get_current_win()
   vim.api.nvim_win_set_buf(win, buf)
+
   vim.cmd("setfiletype nvim-lsp-log")
   vim.keymap.set("n", "q", ("<CMD>bdelete %d<CR>"):format(buf))
+  vim.bo[buf].bufhidden = "delete"
 
-  return setmetatable({ buf = buf, win = win, is_last_line = false }, View)
+  local file_path = vim.lsp.get_log_path()
+  return setmetatable({ file = File:new(file_path), buf = buf, win = win, is_last_line = true }, View)
 end
 
 function View:set_content()
   vim.bo[self.buf].modifiable = true
-  local content = ParseFile:new():execute(file_path)
-  vim.api.nvim_buf_set_lines(self.buf, 0, -1, false, vim.fn.split(content, "\n"))
+  local unparsed_content = self.file:read()
+  local parsed_content = ParseLog:new():execute(unparsed_content)
+  vim.api.nvim_buf_set_lines(self.buf, 0, -1, false, vim.fn.split(parsed_content, "\n"))
   vim.bo[self.buf].modifiable = false
+  if self.is_last_line then
+    vim.api.nvim_win_call(self.win, function()
+      vim.cmd("normal! G")
+    end)
+  end
 end
 
 function View:set_scroll()
@@ -45,7 +54,7 @@ function View:set_scroll()
   if not watch then
     return
   end
-  watch:start(file_path, {}, function(err)
+  watch:start(self.file.path, {}, function(err)
     vim.schedule(function()
       if err then
         vim.print(err)

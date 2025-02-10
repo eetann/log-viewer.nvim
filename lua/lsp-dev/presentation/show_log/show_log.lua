@@ -1,6 +1,7 @@
 ---@tag lsp-dev-lsp-log-viewer
 ---@toc_entry LSP log viewer
 ---@text
+--- LSP log viewer ~
 --- View parsed and easy-to-read LSP logs.
 --- When the log is updated, the view is also updated.
 --- If the cursor is on the last line, it will automatically scroll to the end.
