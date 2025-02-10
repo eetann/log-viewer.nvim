@@ -32,7 +32,7 @@ local subcmd_tbl = {
   },
   deleteLog = {
     impl = function()
-      require("lsp-dev.presentation.delete_log").delete_log()
+      require("lsp-dev.presentation.delete_log.delete_log").delete_log()
     end,
   },
   showCapabilities = {

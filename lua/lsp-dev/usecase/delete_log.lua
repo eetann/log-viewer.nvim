@@ -11,44 +11,39 @@ function DeleteLog:new(file)
   return setmetatable({ file = file }, DeleteLog)
 end
 
----@param dateStr string
----@param timeStr string
+---@param dateTimeStr string
 ---@return osdateparam
-function DeleteLog:parse_date(dateStr, timeStr)
-  local s_year, s_month, s_day = dateStr:match("(%d+)-(%d+)-(%d+)")
-  local year = tonumber(s_year)
-  local month = tonumber(s_month)
-  local day = tonumber(s_day)
-  local s_hour, s_minute, s_second = timeStr:match("(%d+):(%d+):(%d+)")
-  local hour = tonumber(s_hour)
-  local minute = tonumber(s_minute)
-  local second = tonumber(s_second)
+function DeleteLog:parse_date(dateTimeStr)
+  local s_year, s_month, s_day, s_hour, s_minute, s_second = dateTimeStr:match("(%d+)-(%d+)-(%d+) (%d+):(%d+):(%d+)")
   return {
-    year = year,
-    month = month,
-    day = day,
-    hour = hour,
-    min = minute,
-    sec = second,
+    year = tonumber(s_year),
+    month = tonumber(s_month),
+    day = tonumber(s_day),
+    hour = tonumber(s_hour),
+    min = tonumber(s_minute),
+    sec = tonumber(s_second),
   }
 end
 
-function DeleteLog:execute()
+---@param dateTimeStr string
+---@return string[]|nil
+function DeleteLog:execute(dateTimeStr)
+  local delete_end = self:parse_date(dateTimeStr)
+  if delete_end.sec == nil then
+    vim.notify("Date and time format is wrong.")
+    return nil
+  end
+
   local content = self.file:read()
-  -- TODO: 引数で範囲を指定
-  local delete_end = os.date("*t") --[[@as osdate]]
-  -- TODO: yes / no
-  content = self:delete_lines(delete_end, content)
-  self.file:write(content)
+  return self:delete_lines(delete_end, content)
 end
 
 ---@param delete_end osdate
 ---@param content string
----@return string
+---@return string[]
 function DeleteLog:delete_lines(delete_end, content)
   local lines = vim.split(content, "\n")
 
-  delete_end.day = delete_end.day - 1
   local delete_end_unixtime = os.time(delete_end --[[@as osdateparam]])
 
   local records = {}
@@ -59,7 +54,7 @@ function DeleteLog:delete_lines(delete_end, content)
     if date == "" or time == "" then
       goto continue
     end
-    local datetime = self:parse_date(date, time)
+    local datetime = self:parse_date(date .. " " .. time)
     if datetime == {} then
       goto continue
     end
@@ -69,7 +64,7 @@ function DeleteLog:delete_lines(delete_end, content)
     end
     ::continue::
   end
-  return table.concat(records, "\n")
+  return records
 end
 
 return DeleteLog
