@@ -1,10 +1,3 @@
----@tag lsp-dev-change-log-level
----@toc_entry Change log level
----@text
---- Change log level ~
---- You can quickly switch between LSP logging level with a popup.
---- The popup also displayes the current level.
-
 local M = {}
 
 local Menu = require("nui.menu")
@@ -16,6 +9,12 @@ local function set_log_level(level)
   vim.lsp.set_log_level(level)
 end
 
+---@tag lsp-dev-change_log_level
+---@toc_entry Change log level
+---@text
+--- Change log level ~
+--- You can quickly switch between LSP logging level with a popup.
+--- The popup also displayes the current level.
 function M.change_log_level()
   local lines = {
     Menu.separator("Now: " .. vim.lsp.log.levels[vim.lsp.log.get_level()]),

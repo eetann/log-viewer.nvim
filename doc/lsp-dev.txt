@@ -1,19 +1,16 @@
-==============================================================================
-------------------------------------------------------------------------------
 *lsp-dev* Help language server developers
 
 ==============================================================================
 Table of Contents                                  *lsp-dev-table-of-contents*
-  Setup........................................................|lsp-dev.setup|
-  LSP log viewer......................................|lsp-dev-lsp-log-viewer|
-  Delete LSP log..........................................|lsp-dev-delete-log|
-  Change log level..................................|lsp-dev-change-log-level|
-  Show language server capabilities................|lsp-dev-show-capabilities|
+  Setup........................................................|lsp-dev-setup|
+  LSP log viewer............................................|lsp-dev-show_log|
+  Delete LSP log..........................................|lsp-dev-delete_log|
+  Change log level..................................|lsp-dev-change_log_level|
+  Show language server capabilities................|lsp-dev-show_capabilities|
   Commands..................................................|lsp-dev-commands|
-  API............................................................|lsp-dev-api|
 
 ------------------------------------------------------------------------------
-                                                                 *lsp-dev.setup*
+                                                                 *lsp-dev-setup*
                              `LspDev.setup`({args})
 
 No setup argument is required.
@@ -21,9 +18,9 @@ No setup argument is required.
 
 ==============================================================================
 ------------------------------------------------------------------------------
-                                                        *lsp-dev-lsp-log-viewer*
+                                                              *lsp-dev-show_log*
+                                 `M.show_log`()
 
-LSP log viewer ~
 View parsed and easy-to-read LSP logs.
 When the log is updated, the view is also updated.
 If the cursor is on the last line, it will automatically scroll to the end.
@@ -34,7 +31,8 @@ default mappings:
 
 ==============================================================================
 ------------------------------------------------------------------------------
-                                                            *lsp-dev-delete-log*
+                                                            *lsp-dev-delete_log*
+                                `M.delete_log`()
 
 Delete LSP log ~
 Delete logs from the beginning of the file to the date and time you entered.
@@ -44,7 +42,8 @@ On the dialog to decide until when to delete,
 
 ==============================================================================
 ------------------------------------------------------------------------------
-                                                      *lsp-dev-change-log-level*
+                                                      *lsp-dev-change_log_level*
+                             `M.change_log_level`()
 
 Change log level ~
 You can quickly switch between LSP logging level with a popup.
@@ -53,7 +52,8 @@ The popup also displayes the current level.
 
 ==============================================================================
 ------------------------------------------------------------------------------
-                                                     *lsp-dev-show-capabilities*
+                                                     *lsp-dev-show_capabilities*
+                            `M.show_capabilities`()
 
 Show language server capabilities ~
 Select Language server and display the selected capabilities as a buffer.
@@ -67,47 +67,16 @@ Commands ~
 `:LspDev {subcommand}`
 
 `:LspDev showLog`
-  details -> |lsp-dev-lsp-log-viewer|
+  details -> |lsp-dev-show_log|
 
 `:LspDev deleteLog`
-  details -> |lsp-dev-delete-log|
+  details -> |lsp-dev-delete_log|
 
 `:LspDev changeLogLevel`
-  details -> |lsp-dev-change-log-level|
+  details -> |lsp-dev-change_log_level|
 
 `:LspDev showCapabilities`
-  details -> |lsp-dev-show-capabilities|
-
-
-==============================================================================
-------------------------------------------------------------------------------
-                                                                   *lsp-dev-api*
-
-API ~
-
-------------------------------------------------------------------------------
-                                                              *lsp-dev.show_log*
-                                 `M.show_log`()
-
-  details -> |lsp-dev-lsp-log-viewer|
-
-------------------------------------------------------------------------------
-                                                            *lsp-dev.delete_log*
-                                `M.delete_log`()
-
-  details -> |lsp-dev-delete-log|
-
-------------------------------------------------------------------------------
-                                                      *lsp-dev.change_log_level*
-                             `M.change_log_level`()
-
-  details -> |lsp-dev-change-log-level|
-
-------------------------------------------------------------------------------
-                                                     *lsp-dev.show_capabilities*
-                            `M.show_capabilities`()
-
-  details -> |lsp-dev-show-capabilities|
+  details -> |lsp-dev-show_capabilities|
 
 
  vim:tw=78:ts=8:noet:ft=help:norl:
