@@ -11,7 +11,7 @@ LspDev.config = {
   word = "Hello!",
 }
 
----@tag lsp-dev.setup
+---@tag lsp-dev-setup
 ---@toc_entry Setup
 ---@text
 --- No setup argument is required.

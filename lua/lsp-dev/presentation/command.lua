@@ -5,16 +5,16 @@
 --- `:LspDev {subcommand}`
 ---
 --- `:LspDev showLog`
----   details -> |lsp-dev-lsp-log-viewer|
+---   details -> |lsp-dev-show_log|
 ---
 --- `:LspDev deleteLog`
----   details -> |lsp-dev-delete-log|
+---   details -> |lsp-dev-delete_log|
 ---
 --- `:LspDev changeLogLevel`
----   details -> |lsp-dev-change-log-level|
+---   details -> |lsp-dev-change_log_level|
 ---
 --- `:LspDev showCapabilities`
----   details -> |lsp-dev-show-capabilities|
+---   details -> |lsp-dev-show_capabilities|
 
 ---@class LspDev.Subcommand
 ---@field impl fun(args:string[], opts: table) The comand implementation

@@ -15,5 +15,4 @@ MiniDoc.generate({
   "lua/lsp-dev/presentation/change_log_level.lua",
   "lua/lsp-dev/presentation/show_capabilities.lua",
   "lua/lsp-dev/presentation/command.lua",
-  "lua/lsp-dev/presentation/api.lua",
 }, "doc/lsp-dev.txt", { hooks = hooks })
